@@ -23,7 +23,7 @@ def send_message(message, is_free_tier_user: str, system_prompt, client):
 def send_messages(messages, is_free_tier_user, system_prompt, client):
     df = pd.DataFrame(columns=['message', 'reasoning_content', 'final_response'])
     for message in tqdm(messages):
-        reasoning_content, final_response = send_message(message, "False", system_prompt, client)
+        reasoning_content, final_response = send_message(message, is_free_tier_user, system_prompt, client)
         df = df.append({'message': message, 'reasoning_content': reasoning_content, 'final_response': final_response}, ignore_index=True)
     return df
 
